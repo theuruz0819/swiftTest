@@ -1,10 +1,24 @@
 import XCTest
 
-struct Todo {
+class Tennis {
+    var playerA : String
+    var scoreA : Int
+    var playerB : String
+    var scoreB : Int
     
+    init(_ playerA : String, _ playerB : String) {
+        self.playerA = playerA
+        self.scoreA = 0
+        self.playerB = playerB
+        self.scoreB = 0
+    }
+    
+    func score(_ playerName: String) -> String{
+        return "";
+    }
 }
 
-class TodoTests: XCTestCase {
+class TennisTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -13,9 +27,14 @@ class TodoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTodo() {
-        XCTAssertNotNil(Todo())
+    func testTodoInitial() {
+        
+        var teness = Tennis("AAA","BBB")
+        
+        XCTAssertNotNil(teness)
+        XCTAssert(teness.playerA == "AAA")
+        XCTAssert(teness.playerB == "BBB")
     }
   
 }
-TodoTests.defaultTestSuite.run()
+TennisTests.defaultTestSuite.run()
