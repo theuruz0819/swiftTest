@@ -20,6 +20,10 @@ class Tennis {
 
 class TennisTests: XCTestCase {
 
+    
+    var playerNameA = "AAA"
+    var playerNameB = "BBB"
+        
     override func setUp() {
         super.setUp()
     }
@@ -27,14 +31,53 @@ class TennisTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTodoInitial() {
+
+    func test0Initial() {
         
-        var teness = Tennis("AAA","BBB")
+        let tennis = Tennis(playerNameA, playerNameB);
         
-        XCTAssertNotNil(teness)
-        XCTAssert(teness.playerA == "AAA")
-        XCTAssert(teness.playerB == "BBB")
+        XCTAssertNotNil(tennis)
+        XCTAssert(tennis.playerA == playerNameA)
+        XCTAssert(tennis.playerB == playerNameB)
     }
-  
+    
+    
+    
+    func test1NoDeuce(){
+        let tennis = Tennis(playerNameA, playerNameB);
+        
+        XCTAssertNotNil(tennis)
+        XCTAssert(tennis.playerA == playerNameA)
+        XCTAssert(tennis.playerB == playerNameB)
+        
+        XCTAssert(tennis.score(playerNameA) == "")
+        XCTAssert(tennis.score(playerNameA) == "")
+        XCTAssert(tennis.score(playerNameB) == "")
+        XCTAssert(tennis.score(playerNameB) == "")
+    }
+    
+    func test2Deuce(){
+        
+        let tennis = Tennis(playerNameA, playerNameB);
+        
+        XCTAssertNotNil(tennis)
+        XCTAssert(tennis.playerA == playerNameA)
+        XCTAssert(tennis.playerB == playerNameB)
+        
+        XCTAssert(tennis.score(playerNameA) == "")
+        XCTAssert(tennis.score(playerNameA) == "")
+        XCTAssert(tennis.score(playerNameB) == "")
+        XCTAssert(tennis.score(playerNameB) == "")
+        
+    }
+    
+    func test3Adv(){
+        
+    }
+    
+    func test4Win(){
+        
+    }
+    
 }
 TennisTests.defaultTestSuite.run()
