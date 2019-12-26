@@ -21,6 +21,11 @@ class Tennis {
             scoreB = scoreB + 1
         }
         
+        if scoreA == scoreB && scoreA >= 3 {
+            return "Deuce"
+        }
+        
+        
         let scoreMessageA = getScoreMessage(scoreA)
         let scoreMessageB = getScoreMessage(scoreB)
         
@@ -89,6 +94,21 @@ class TennisTests: XCTestCase {
         XCTAssert(tennis.score(playerNameB) == "Thirty Forty")
     }
     
+    func test2Deuce(){
+        let tennis = Tennis(playerNameA, playerNameB);
+
+        tennis.score(playerNameA)
+        tennis.score(playerNameA)
+        tennis.score(playerNameB)
+        tennis.score(playerNameB)
+        tennis.score(playerNameA)
+        XCTAssert(tennis.score(playerNameB) == "Deuce")
+        XCTAssertFalse(tennis.score(playerNameB) == "Deuce")
+        XCTAssert(tennis.score(playerNameA) == "Deuce")
+        XCTAssertFalse(tennis.score(playerNameB) == "Deuce")
+        XCTAssertFalse(tennis.score(playerNameB) == "Deuce")
+
+    }
     
 }
 TennisTests.defaultTestSuite.run()
