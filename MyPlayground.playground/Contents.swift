@@ -14,8 +14,39 @@ class Tennis {
     }
     
     func score(_ playerName: String) -> String{
-        return "";
+        
+        if(playerName == playerA){
+            scoreA = scoreA + 1
+        } else if(playerName == playerB){
+            scoreB = scoreB + 1
+        }
+        
+        let scoreMessageA = getScoreMessage(scoreA)
+        let scoreMessageB = getScoreMessage(scoreB)
+        
+        if scoreMessageA != scoreMessageB {
+            return scoreMessageA + " " + scoreMessageB
+        } else {
+            return scoreMessageB + " All"
+        }
+                
     }
+    
+    func getScoreMessage(_ scoreInt : Int) -> String{
+        switch scoreInt {
+        case 0:
+            return "Love"
+        case 1:
+            return "Fifteen"
+        case 2:
+            return "Thirty"
+        case 3:
+            return "Forty"
+        default:
+            return ""
+        }
+    }
+    
 }
 
 class TennisTests: XCTestCase {
@@ -50,34 +81,14 @@ class TennisTests: XCTestCase {
         XCTAssert(tennis.playerA == playerNameA)
         XCTAssert(tennis.playerB == playerNameB)
         
-        XCTAssert(tennis.score(playerNameA) == "")
-        XCTAssert(tennis.score(playerNameA) == "")
-        XCTAssert(tennis.score(playerNameB) == "")
-        XCTAssert(tennis.score(playerNameB) == "")
+        XCTAssert(tennis.score(playerNameA) == "Fifteen Love")
+        tennis.score(playerNameA)
+        
+        XCTAssert(tennis.score(playerNameB) == "Thirty Fifteen")
+        XCTAssert(tennis.score(playerNameB) == "Thirty All")
+        XCTAssert(tennis.score(playerNameB) == "Thirty Forty")
     }
     
-    func test2Deuce(){
-        
-        let tennis = Tennis(playerNameA, playerNameB);
-        
-        XCTAssertNotNil(tennis)
-        XCTAssert(tennis.playerA == playerNameA)
-        XCTAssert(tennis.playerB == playerNameB)
-        
-        XCTAssert(tennis.score(playerNameA) == "")
-        XCTAssert(tennis.score(playerNameA) == "")
-        XCTAssert(tennis.score(playerNameB) == "")
-        XCTAssert(tennis.score(playerNameB) == "")
-        
-    }
-    
-    func test3Adv(){
-        
-    }
-    
-    func test4Win(){
-        
-    }
     
 }
 TennisTests.defaultTestSuite.run()
