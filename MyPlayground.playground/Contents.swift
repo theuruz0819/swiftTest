@@ -25,6 +25,17 @@ class Tennis {
             return "Deuce"
         }
         
+        if(scoreA > 3 || scoreB > 3){
+            if(scoreA > scoreB){
+                if(abs(scoreA - scoreB) == 1){
+                    return playerA + " Adv"
+                }
+            } else {
+                if(abs(scoreA - scoreB) == 1){
+                    return playerB + " Adv"
+                }
+            }
+        }
         
         let scoreMessageA = getScoreMessage(scoreA)
         let scoreMessageB = getScoreMessage(scoreB)
@@ -110,5 +121,18 @@ class TennisTests: XCTestCase {
 
     }
     
+    func test3Adv(){
+        let tennis = Tennis(playerNameA, playerNameB);
+        
+        tennis.score(playerNameA)
+        tennis.score(playerNameA)
+        tennis.score(playerNameB)
+        tennis.score(playerNameB)
+        tennis.score(playerNameA)
+        tennis.score(playerNameB)
+        XCTAssert(tennis.score(playerNameB) == "BBB Adv")
+        tennis.score(playerNameA)
+        XCTAssert(tennis.score(playerNameA) == "AAA Adv")
+    }
 }
 TennisTests.defaultTestSuite.run()
